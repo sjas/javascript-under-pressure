@@ -1,21 +1,23 @@
-function longestString(i) {
-    
+function longestString(i) 
+{    
     // i will be an array.
     // return the longest string in the array
-    var str;
-    
-    for (x in i) {
-        var size = 0;
-        
-        if(typeof i[x] !== "string") {
-            continue;
+    var longString = "";
+    for (j = 0; j < i.length; j++)
+    {
+        var stringToCheck = i[j]; 
+        if( Object.prototype.toString.call( i[j] ) === '[object Array]' )
+        {
+            var loopNum = j;
+            stringToCheck = longestString( i[j] ); 
+            j = loopNum; 
         }
-    
-        if (i[x].length > size) {
-            size = i[x].size;
-            str = i[x];
+         
+        if (stringToCheck.length > longString.length)
+        {
+            longString = stringToCheck;
         }
     }
-    
-    return str;
+     
+    return longString;
 }
